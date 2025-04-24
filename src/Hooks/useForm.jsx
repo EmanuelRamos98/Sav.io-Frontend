@@ -5,15 +5,19 @@ const useForm = (initialForm) => {
     const [errors, setErrors] = useState({ global: '' })
 
     const handleChange = (evento) => {
-        const field_name = evento.target.name
-        const field_value = evento.target.value
-
-        setErrors((prevErrors) => ({ ...prevErrors, [field_name]: undefined }))
-
-        setFormState((prevFormState) => {
-            return { ...prevFormState, [field_name]: field_value }
-        })
-    }
+        const { name, value, type } = evento.target;
+    
+        const parsedValue = type === 'number'
+            ? value === '' ? '' : parseFloat(value)
+            : value;
+    
+        setErrors((prevErrors) => ({ ...prevErrors, [name]: undefined }));
+    
+        setFormState((prevFormState) => ({
+            ...prevFormState,
+            [name]: parsedValue
+        }));
+    };
 
     const validationForm = (optionFields = []) => {
         let newErrors = {}

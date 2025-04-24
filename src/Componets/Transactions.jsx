@@ -7,7 +7,7 @@ const Transactions = () => {
     const [endDate, setEndDate] = useState('')
 
     const { transactions, loading, error } = useMovements(startDate, endDate)
-    
+
     return (
         <div>
             <h2>Ultimo mes en movimientos</h2>

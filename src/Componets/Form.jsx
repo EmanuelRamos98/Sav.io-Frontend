@@ -53,7 +53,15 @@ const Field = ({ field, handleChange, state_value, error }) => {
                 {
                     field.field_component === 'INPUT'
                         ? <input onChange={handleChange} value={state_value} {...field.field_data_props} />
-                        : <textarea></textarea>
+                        : field.field_component === 'SELECT'
+                            ? (
+                                <select name={field.field_data_props.name} onChange={handleChange} value={state_value}>
+                                    {field.field_data_props.options.map(opt => (
+                                        <option key={opt} value={opt}>{opt}</option>
+                                    ))}
+                                </select>
+                            )
+                            : <textarea />
                 }
                 {error && <span>{error}</span>}
             </>

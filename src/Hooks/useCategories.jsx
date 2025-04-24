@@ -3,7 +3,7 @@ import { getAuthenticatedHeaders } from '../Utils/feching.ultis'
 
 const useCategories = (startDate, endDate) => {
     const [categories, setCategories] = useState(null)
-    const [loading, setLoading] = useState(null)
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
     useEffect(() => {
