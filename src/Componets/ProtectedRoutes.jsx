@@ -18,7 +18,7 @@ const ProtectedRoutes = () => {
             {
                 is_authenticated
                     ? <Outlet />
-                    : <Navigate to={'/login'} />
+                    : <Navigate to={'/'} />
             }
         </>
     )

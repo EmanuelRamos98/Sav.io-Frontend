@@ -1,12 +1,14 @@
 import React, { useEffect, useState, } from 'react'
 import useMovements from '../Hooks/useMovements'
 import DateRangePicker from './DateRangePicker'
+import Grafico from './Grafico'
 
 const Transactions = () => {
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
 
     const { transactions, loading, error } = useMovements(startDate, endDate)
+
 
     return (
         <div>
@@ -23,6 +25,7 @@ const Transactions = () => {
                         : error ?
                             <p>Error</p> :
                             <div>
+                                <Grafico dataObj={transactions} />
                                 <p>Ingresos ${transactions.income.toFixed(2)}</p>
                                 <p>Gastos ${transactions.expense.toFixed(2)}</p>
                                 <p>Totlal ${transactions.balance.toFixed(2)}</p>
