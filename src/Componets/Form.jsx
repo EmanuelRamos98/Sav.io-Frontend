@@ -1,16 +1,30 @@
 import React from 'react'
 import useForm from '../Hooks/useForm'
 
-const Form = ({ children, action, form_fields, initial_state_form }) => {
+const Form = ({ children, action, form_fields, initial_state_form, validateOnlyChanged = false }) => {
     const { formState, handleChange, errors, validationForm, setErrors } = useForm(initial_state_form)
+
+    const mapType = {
+        ingreso: 'income',
+        gasto: 'expense'
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        const validationsErrors = validationForm()
+
+        const optionsFields = validateOnlyChanged ? Object.keys(formState) : []
+        const validationsErrors = validationForm(optionsFields)
+
+
         if (Object.keys(validationsErrors).length > 0) {
             return setErrors(validationsErrors)
         }
-        const data = await action(formState)
+
+        const formDataToSend = {
+            ...formState,
+            type: mapType[formState.type] || formState.type
+        }
+        const data = await action(formDataToSend)
         if (!data.ok) {
             setErrors({ global: data.message })
         }
@@ -24,7 +38,7 @@ const Form = ({ children, action, form_fields, initial_state_form }) => {
                 errors={errors}
             />
             {children}
-            {errors.global && <span>{errors.global}</span>}
+            {errors.global && <span className='form-error-global'>{errors.global}</span>}
         </form>
     )
 }
@@ -63,7 +77,7 @@ const Field = ({ field, handleChange, state_value, error }) => {
                             )
                             : <textarea />
                 }
-                {error && <span>{error}</span>}
+                {error && <span className='form-error'>{error}</span>}
             </>
         </div>
     )

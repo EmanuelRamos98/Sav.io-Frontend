@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
-import useHistory from '../Hooks/useHistory'
 import DateRangePicker from './DateRangePicker'
 import DeleteTransaction from './DeleteTransaction'
 import EditarTransaction from './EditarTransaction'
+import { useModal } from '../Context/ModalContext'
+import { useHistory } from '../Hooks'
 
 const History = () => {
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
     const [type, setType] = useState('')
     const [category, setCategory] = useState('')
-    const [mostrarEdit, setMostrarEdit] = useState(null)
-
+    const { openModal } = useModal()
     const { historial, loading, error } = useHistory(startDate, endDate, type, category)
 
-    const handleMostrar = (id) => {
-        setMostrarEdit(prevState => prevState === id ? null : id)
+    const handleOpenModal = (transactionId) => {
+        openModal(<EditarTransaction transactionId={transactionId} />)
     }
-
+    const handleOpenModalDelete = (transactionId) => {
+        openModal(<DeleteTransaction transactionId={transactionId} />)
+    }
+    const categorias = ['comida', 'salario', 'otros ingresos', 'transporte', 'servicios', 'ocio', 'ahorro', 'educacion', 'extras', 'deudas', 'otros']
     return (
         <div>
             <h1>Historial completo de transactions</h1>
@@ -38,9 +41,9 @@ const History = () => {
                     <label>Categoria:</label>
                     <select onChange={(e) => setCategory(e.target.value)}>
                         <option value="">Todas</option>
-                        <option value="sueldo">Sueldo</option>
-                        <option value="servicios">Servicios</option>
-                        <option value="otros">Otros</option>
+                        {categorias.map((cat) => (
+                            <option key={cat} value={cat}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</option>
+                        ))}
                     </select>
                 </div>
             </div>
@@ -59,15 +62,8 @@ const History = () => {
                                             <p>${(item.amount / 100).toFixed(2)}</p>
                                             <p>{item.type}</p>
                                             <p>{item.date}</p>
-                                            <button onClick={() => handleMostrar(item._id)}>
-                                                {mostrarEdit === item._id ? 'Cancelar' : 'Editar'}
-                                            </button>
-                                            {
-                                                mostrarEdit === item._id &&
-                                                <EditarTransaction transactionId={item._id} />
-
-                                            }
-                                            <DeleteTransaction transactionId={item._id} />
+                                            <button onClick={() => handleOpenModal(item._id)}>Editar</button>
+                                            <button onClick={() => handleOpenModalDelete(item._id)}>Eliminar</button>
                                             <hr />
                                         </div>
                                     )

@@ -1,0 +1,37 @@
+.container_navbar {
+    background-color: var(--Color-Black);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    position: sticky;
+    top: 0;
+}
+.tittle_navbar {
+    font-size: 1.5rem;
+}
+.container_buttons_navbar {
+    display: flex;
+    gap: 10px;
+}
+
+.links_navbar {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: text-decoration-color 0.4s ease;
+}
+
+.button_navbar {
+    border: none;
+    background-color: var(--Color-Black);
+    color: white;
+    font-size: 1rem;
+    transition: text-decoration-color 0.4s ease;
+}
+.button_navbar:hover,
+.links_navbar:hover {
+    text-decoration: underline 2px;
+    text-decoration-color: var(--Color-Yellow);
+}

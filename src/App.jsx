@@ -1,12 +1,8 @@
 import React from 'react'
+import '../src/Styles/global.css'
 import { Route, Routes } from 'react-router-dom'
 import { ForgotPasswordScreen, HistoryScreen, HomeScreen, LogginScreen, RecoveryPasswordScreen, RegisterScreen } from './Screens'
-import ProtectedRoutes from './Componets/ProtectedRoutes'
-import { ModalProvider } from './Context/ModalContext'
-import Navbar from './Componets/Navbar'
-import Modal from './Componets/Modal'
-import CreateTransaction from './Componets/CreateTransaction'
-import ProtectedLayout from './Componets/ProtectedLayout'
+import { ProtectedLayout, ProtectedRoutes } from './Componets'
 
 const App = () => {
     return (
@@ -14,7 +10,7 @@ const App = () => {
             <Route path='/' element={<LogginScreen />} />
             <Route path='/register' element={<RegisterScreen />} />
             <Route path='/forgot-password' element={<ForgotPasswordScreen />} />
-            <Route path='/auth/recovery-password/:reset-token' element={<RecoveryPasswordScreen />} />
+            <Route path='/recovery-password/:token_recuperation' element={<RecoveryPasswordScreen />} />
             <Route element={<ProtectedRoutes />}>
                 <Route element={<ProtectedLayout />} >
                     <Route path='/home' element={<HomeScreen />} />

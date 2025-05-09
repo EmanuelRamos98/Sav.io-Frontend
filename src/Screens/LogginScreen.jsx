@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../Context/AuthContext'
-import { useNavigate } from 'react-router-dom'
-import Form from '../Componets/Form'
+import { Link, useNavigate } from 'react-router-dom'
+import { Form } from '../Componets'
+import '../Styles/global.css'
+
 
 const LogginScreen = () => {
     const { login } = useContext(AuthContext)
@@ -64,12 +66,22 @@ const LogginScreen = () => {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
-            <Form action={actionLogin} form_fields={form_fields} initial_state_form={initial_state_form}>
-                <button type='submit'>Entrar</button>
-            </Form>
-        </div>
+        <div className='container_card_form'>
+            <div className='card_info'>
+                <h1 className='title'>Sav.io</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam architecto eos sed officia maximse, recusandae fugit? Voluptates nobis vero, repudiandae, non quibusdam distinctio est veritatis rem iste, illo cum tempora!</p>
+            </div>
+            <div className='card_form'>
+                <h2 className='title_card_form'>Login</h2>
+                <Form action={actionLogin} form_fields={form_fields} initial_state_form={initial_state_form}>
+                    <div className='buttons_form'>
+                        <button type='submit' className='button_form'>Entrar</button>
+                        <Link className='link_form' to={'/register'}>Registrarse</Link>
+                        <Link className='link_form' to={'/forgot-password'}>Olvide mi contraseña</Link>
+                    </div>
+                </Form>
+            </div>
+        </div >
     )
 }
 

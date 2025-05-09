@@ -28,7 +28,7 @@ const CreateTransaction = () => {
             field_data_props: {
                 name: 'type',
                 id: 'type',
-                options: ['income', 'expense']
+                options: ['ingreso', 'gasto']
             }
         },
         {
@@ -40,7 +40,7 @@ const CreateTransaction = () => {
             field_data_props: {
                 name: 'category',
                 id: 'category',
-                options: ['comida', 'salario', 'transporte', 'otros']
+                options: ['comida', 'salario', 'otros ingresos', 'transporte', 'servicios', 'ocio', 'ahorro', 'educacion', 'extras', 'deudas', 'otros']
             }
         },
         {

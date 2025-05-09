@@ -7,7 +7,7 @@ const EditarTransaction = ({ transactionId }) => {
     const handleEdit = async (formData) => {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/transaction/update/${transactionId}`, {
             method: 'PUT',
-            headers:getAuthenticatedHeaders(),
+            headers: getAuthenticatedHeaders(),
             body: JSON.stringify(formData)
         })
         console.log('formData', formData);
@@ -25,7 +25,7 @@ const EditarTransaction = ({ transactionId }) => {
             field_data_props: {
                 name: 'type',
                 id: 'type',
-                options: ['income', 'expense']
+                options: ['ingreso', 'gasto']
             }
         },
         {
@@ -37,7 +37,7 @@ const EditarTransaction = ({ transactionId }) => {
             field_data_props: {
                 name: 'category',
                 id: 'category',
-                options: ['comida', 'salario', 'transporte', 'otros']
+                options: ['comida', 'salario', 'otros ingresos', 'transporte', 'servicios', 'ocio', 'ahorro', 'educacion', 'extras', 'deudas', 'otros']
             }
         },
         {
@@ -65,19 +65,33 @@ const EditarTransaction = ({ transactionId }) => {
                 placeholder: 'descripción',
                 type: 'text'
             }
+        },
+        {
+            label_text: 'Fecha',
+            field_component: 'INPUT',
+            field_container_props: {
+                className: 'row_field'
+            },
+            field_data_props: {
+                name: 'date',
+                id: 'date',
+                type: 'date'
+            }
         }
     ];
-    
+
     const initial_state_form = {
         type: '',
         category: '',
         amount: '',
-        description: ''
+        description: '',
+        date: ''
     }
 
     return (
         <>
-            <Form initial_state_form={initial_state_form} form_fields={form_fields} action={handleEdit}>
+            <h2>Editar transaction</h2>
+            <Form initial_state_form={initial_state_form} form_fields={form_fields} action={handleEdit} validateOnlyChanged={true}>
                 <button type='submit'>Actualizar</button>
             </Form>
         </>

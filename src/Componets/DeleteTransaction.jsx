@@ -11,6 +11,8 @@ const DeleteTransaction = ({ transactionId }) => {
     }
     return (
         <>
+            <h2>Seguro que quieres eliminar esta transaction</h2>
+            <p>Los datos se perderan para siempre</p>
             <button onClick={handleDelete}>Eliminar</button>
         </>
     )

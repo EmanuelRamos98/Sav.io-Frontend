@@ -1,7 +1,7 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Legend, Tooltip } from 'recharts';
 
-const COLORS = ['#00C853', '#D50000'];
+const COLORS = ['#DDD92A', '#2D2A32'];
 
 const Grafico = ({ dataObj }) => {
     if (!dataObj) return null;
@@ -14,7 +14,7 @@ const Grafico = ({ dataObj }) => {
         }));
 
     return (
-        <PieChart width={420} height={250}>
+        <PieChart width={500} height={200}>
             <Pie
                 data={data}
                 cx="50%"

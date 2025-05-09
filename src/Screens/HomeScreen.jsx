@@ -1,16 +1,16 @@
 import React from 'react'
-import Transactions from '../Componets/Transactions'
-import Categories from '../Componets/Categories'
-import CreateTransaction from '../Componets/CreateTransaction'
-import Navbar from '../Componets/Navbar'
+import { Categories, Transactions } from '../Componets'
+import '../Styles/home.css'
+import Cards from '../Componets/Cards'
 
 const HomeScreen = () => {
 
     return (
-        <div>
+        <>
+            <Cards />
             <Transactions />
             <Categories />
-        </div>
+        </>
     )
 }
 

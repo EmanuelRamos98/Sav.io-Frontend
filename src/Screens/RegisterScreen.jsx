@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Form from '../Componets/Form'
+import { Form } from '../Componets'
 
 const RegisterScreen = () => {
     const nav = useNavigate()
@@ -18,7 +18,7 @@ const RegisterScreen = () => {
             if (!data.ok) {
                 console.error('Error')
             } else {
-                nav('/login')
+                nav('/')
             }
             return data
         } catch (error) {
@@ -74,12 +74,20 @@ const RegisterScreen = () => {
         password: ''
     }
     return (
-        <div>
-            <h1>Register</h1>
-            <Form action={actionRegister} form_fields={form_fields} initial_state_form={initial_state_form}>
-                <button type='submit'>Registrar</button>
-                <Link to={'/'}>Ir a login</Link>
-            </Form>
+        <div className='container_card_form'>
+            <div className='card_info'>
+                <h1 className='title'>Sav.io</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit molestiae perferendis aspernatur praesentium deleniti unde sunt accusamus vero magnam, autem, laboriosam totam et cumque illo natus libero sed expedita pariatur?</p>
+            </div>
+            <div className='card_form'>
+                <h2 className='title_card_form'>Register</h2>
+                <Form action={actionRegister} form_fields={form_fields} initial_state_form={initial_state_form}>
+                    <div className='buttons_form'>
+                        <button type='submit' className='button_form'>Registrar</button>
+                        <Link className='link_form' to={'/'}>Ir a login</Link>
+                    </div>
+                </Form>
+            </div>
         </div>
     )
 }

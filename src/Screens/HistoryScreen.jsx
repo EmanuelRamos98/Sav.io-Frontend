@@ -1,6 +1,5 @@
 import React from 'react'
-import History from '../Componets/History'
-import Navbar from '../Componets/Navbar'
+import { History } from '../Componets'
 
 const HistoryScreen = () => {
     return (

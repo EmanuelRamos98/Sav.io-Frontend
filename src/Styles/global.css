@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    --Color-Black: rgb(45, 42, 50);
+    --Color-Yellow: rgb(221, 217, 42);
+    --Color-Green: rgb(0, 145, 110);
+    --Color-red: rgb(244, 56, 92);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+/* Estilos Formularios */
+
+.container_card_form {
+    height: 100dvh;
+    background-color: var(--Color-Yellow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.title_card_form {
+    font-size: 1.5rem;
+}
+.card_info {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+    padding: 100px;
+}
+.title {
+    font-size: 3.5rem;
+}
+
+.card_form {
+    background-color: var(--Color-Black);
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: white;
+}
+.title_card_form {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.row_field {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 20px;
+    position: relative;
+}
+input {
+    padding: 5px;
+}
+
+.buttons_form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form_error {
+    text-align: center;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: var(--color-fuente);
+    padding: 5px;
+    font-size: 0.8rem;
+    top: 51px;
+    position: absolute;
+    z-index: 10;
+}
+
+.button_form {
+    padding: 10px;
+    border: none;
+}
+.link_form {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    transition: text-decoration-color 0.4s ease;
+}
+.link_form:hover {
+    text-decoration: underline 2px;
+    text-decoration-color: var(--Color-Yellow);
+}
+.form_error_global {
+    text-align: center;
+    width: 220px;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: var(--color-fuente);
+    padding: 5px;
+    font-size: 0.8rem;
+    position: absolute;
+    z-index: 10;
+}
+
+/* Medias Queries */
+@media screen and (min-width: 1200px) {
+    body {
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 920px) {
+    body {
+        font-size: 18px;
+    }
+    .container_card_form {
+        flex-direction: column;
+        gap: 0;
+        padding-bottom: 20px;
+    }
+    .card_info {
+        width: auto;
+        padding: 40px;
+        gap: 10px;
+    }
+    .card_form {
+        width: 380px;
+        height: 400px;
+    }
+}
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    .container_card_form {
+        gap: 20px;
+    }
+    .card_info {
+        min-width: 280px;
+        padding: 30px;
+        gap: 10px;
+    }
+    .card_form {
+        width: 280px;
+        height: 370px;
+    }
+}

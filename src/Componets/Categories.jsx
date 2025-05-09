@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import useCategories from '../Hooks/useCategories'
 import DateRangePicker from './DateRangePicker'
+import { useCategories } from '../Hooks'
 
 const Categories = () => {
     const [startDate, setStartDate] = useState('')

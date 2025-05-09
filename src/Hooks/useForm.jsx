@@ -6,13 +6,13 @@ const useForm = (initialForm) => {
 
     const handleChange = (evento) => {
         const { name, value, type } = evento.target;
-    
+
         const parsedValue = type === 'number'
             ? value === '' ? '' : parseFloat(value)
             : value;
-    
+
         setErrors((prevErrors) => ({ ...prevErrors, [name]: undefined }));
-    
+
         setFormState((prevFormState) => ({
             ...prevFormState,
             [name]: parsedValue
